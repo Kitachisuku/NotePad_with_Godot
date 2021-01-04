@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://mplus-1c-regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://ui.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="ui" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 2 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.05
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="open" type="Button" parent="menu"]
+anchor_right = 0.1
+margin_right = 12.0
+margin_bottom = 30.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.647059, 0.647059, 0.647059, 1 )
+custom_colors/font_color_pressed = Color( 0.329412, 0.329412, 0.329412, 1 )
+text = "開く"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="save" type="Button" parent="menu"]
+anchor_left = 0.1
+anchor_right = 0.2
+margin_left = 14.2952
+margin_right = 26.2952
+margin_bottom = 30.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.647059, 0.647059, 0.647059, 1 )
+custom_colors/font_color_pressed = Color( 0.329412, 0.329412, 0.329412, 1 )
+text = "保存"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="TextEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fd" type="FileDialog" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+window_title = "ファイルを開く"
+mode = 0
+access = 2
+show_hidden_files = true
+current_dir = "/Users/user/Documents/Programs/Godot/NotePad"
+current_path = "/Users/user/Documents/Programs/Godot/NotePad/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="menu/open" to="." method="_on_open_pressed"]
+[connection signal="pressed" from="menu/save" to="." method="_on_save_pressed"]
+[connection signal="draw" from="fd" to="." method="_on_fd_draw"]
+[connection signal="file_selected" from="fd" to="." method="_on_fd_file_selected"]
